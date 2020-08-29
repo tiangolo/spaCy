@@ -47,12 +47,15 @@ class Settings(BaseSettings):
     input_token: SecretStr
     github_event_path: Path
     github_event_name: Optional[str] = None
-    input_users: List[str] = []
+    input_users: str = ""
+    users: List[str] = []
 
-    @validator("input_users", pre=True)
-    def split_commas(cls, v: str):
-        if isinstance(v, str) and "[" not in v:
-            return [u.strip() for u in v.split(",")]
+    @validator("users")
+    def split_commas(cls, v: str, values):
+        if "input_users" in values:
+            input_users = values["input_users"]
+            if isinstance(input_users, str):
+                return [u.strip() for u in input_users.split(",")]
         return v
 
     github_event: Optional[PartialGitHubEvent] = None
@@ -98,7 +101,7 @@ if __name__ == "__main__":
         logging.info("GitHub issue event is not a PR")
         sys.exit()
     if github_event.comment:
-        if github_event.comment.user.login in settings.input_users:
+        if github_event.comment.user.login in settings.users:
             if github_event.comment.body.startswith(f"{command_keyword} "):
                 # To get body of command after @explosion-bot and a space, so a comment:
                 # "@explosion-bot run something"
