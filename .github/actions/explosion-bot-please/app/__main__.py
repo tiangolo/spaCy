@@ -2,8 +2,9 @@ import logging
 import sys
 
 from typer.testing import CliRunner
-from .conf import settings, command_keyword, issue, bot_comment
+
 from .app import app
+from .conf import bot_comment, command_keyword, issue, settings
 
 
 def main():
