@@ -6,4 +6,4 @@ ENV PYTHONPATH=/app
 
 COPY ./app /app
 
-CMD ["python", "-m" "app"]
+CMD ["python", "-m", "app"]
