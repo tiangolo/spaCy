@@ -3,10 +3,10 @@ description: "Ask the @explosion-bot to run custom commands"
 author: "Explosion <contact@explosion.ai>"
 inputs:
   token:
-    description: 'Token for the repo. Can be passed in using ${{ secrets.GITHUB_TOKEN }}'
+    description: 'Token for the repo. Can be passed in using {{ secrets.GITHUB_TOKEN }} with a dollar sign prepended'
     required: true
   ci_token:
-    description: 'Token for CI. Can be passed in using ${{ secrets.CI_TOKEN }}'
+    description: 'Token for CI. Can be passed in using {{ secrets.CI_TOKEN }} with a dollar sign prepended'
     required: true
   users:
     description: 'Comma separated string with GitHub users allowed to trigger commands'
