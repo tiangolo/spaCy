@@ -7,7 +7,7 @@ from github.Commit import Commit
 
 from .conf import bot_comment, issue, settings
 
-app = typer.Typer()
+app = typer.Typer(add_completion=False)
 
 
 class TriggerTypes(str, Enum):
