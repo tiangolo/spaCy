@@ -6,7 +6,6 @@ on:
       - created
       - edited
 
-
 jobs:
   explosion-bot-please:
     runs-on: ubuntu-18.04
