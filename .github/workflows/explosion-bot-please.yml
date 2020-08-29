@@ -11,8 +11,13 @@ jobs:
   explosion-bot-please:
     runs-on: ubuntu-18.04
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v2
       - uses: ./.github/actions/explosion-bot-please
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ci_token: ${{ secrets.CI_TOKEN }}
           users: "ines, honnibal, svlandeg, adrianeboyd, justindujardin, tiangolo"
