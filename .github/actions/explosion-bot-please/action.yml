@@ -1,0 +1,14 @@
+name: "Explosion Bot Please"
+description: "Ask the @explosion-bot to run custom commands"
+author: "Explosion <contact@explosion.ai>"
+inputs:
+  token:
+    description: 'Token for the repo. Can be passed in using {{ secrets.GITHUB_TOKEN }}'
+    required: true
+  users:
+    description: 'Comma separated string with GitHub users allowed to trigger commands'
+    required: true
+    default: "ines, honnibal"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
