@@ -19,5 +19,5 @@ jobs:
       - uses: ./.github/actions/explosion-bot-please
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          ci_token: ${{ secrets.CI_TOKEN }}
+          # ci_token: ${{ secrets.CI_TOKEN }}
           users: "ines, honnibal, svlandeg, adrianeboyd, justindujardin, tiangolo"
