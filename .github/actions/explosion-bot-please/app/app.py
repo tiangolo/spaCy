@@ -30,7 +30,6 @@ def trigger(test_type: TriggerTypes):
         "meta_data": {},
     }
     logging.info(f"JSON to send: {send_json}")
-    raise typer.Abort()
     response = httpx.post(
         f"https://api.buildkite.com/v2/organizations/explosion-ai/pipelines/{test_type.value}/builds",
         headers={
