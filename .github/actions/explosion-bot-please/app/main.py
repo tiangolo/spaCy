@@ -1,5 +1,4 @@
 import logging
-import shlex
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -108,9 +107,8 @@ if __name__ == "__main__":
                 # Would get: "run something"
                 index = len(command_keyword) + 1
                 body = github_event.comment.body[index:]
-                args = shlex.split(body)
-                runner = CliRunner()
-                result = runner.invoke(app, args)
+                runner = CliRunner(mix_stderr=False)
+                result = runner.invoke(app, body)
                 message = "💥🤖\n\n"
                 if result.stdout:
                     message += f"## Output:\n\n{result.stdout}"
